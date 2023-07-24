@@ -90,7 +90,7 @@ export const AllNews = ({ allnews }) => {
                   : news?.description}
               </p>
 
-              <Link href="/">
+              <Link href={`/news/${news?.id}`}>
                 <p
                   style={{
                     fontSize: "15px",
