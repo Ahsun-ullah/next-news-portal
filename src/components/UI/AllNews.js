@@ -31,7 +31,7 @@ export const AllNews = ({ allnews }) => {
           xxl: 60,
         }}
       >
-        {allnews.map((news) => (
+        {allnews?.map((news) => (
           <Col key={news?.id} className="gutter-row" span={6}>
             <Card
               style={{}}
