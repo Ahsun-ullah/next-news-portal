@@ -34,13 +34,29 @@ HomePage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:5000/news");
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
+  // const res = await fetch("http://localhost:5000/news"); // --> json server
   const data = await res.json();
-
+  // console.log(data);
   return {
     props: {
-      allnews: data,
+      // allNews: data, // when using json-server connected
+      allNews: data.data, // when using internal API connected with mongoDB
     },
+    // revalidate: 10, // when using json-server connected
   };
 };
+
+// // for server side rendering (SSR) with json-server data
+
+// export const getServerSideProps = async () => {
+//   const res = await fetch("http://localhost:5000/news");
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       allnews: data,
+//     },
+//   };
+// };
